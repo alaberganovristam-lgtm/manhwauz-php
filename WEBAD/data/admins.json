@@ -1,0 +1,11 @@
+{
+    "admins": [
+        {
+            "id": "04ea83853ab78cb8",
+            "username": "manhwauz",
+            "password": "$2y$12$idEcOW/w6WAR9Q6oibpwGu9tajViw.ftUj0ej6vn3SQQXr86Uzhzm",
+            "role": "superadmin",
+            "createdAt": "2026-05-18"
+        }
+    ]
+}
