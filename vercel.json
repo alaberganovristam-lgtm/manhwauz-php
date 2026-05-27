@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "functions": {
+    "WEB/router.php": { "runtime": "vercel-php@0.7.3" }
+  },
+  "routes": [
+    { "src": "/(.*)", "dest": "/WEB/router.php" }
+  ],
+  "env": {
+    "AURA_PATH": "/var/task/DATA"
+  }
+}

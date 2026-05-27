@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php --version)",
+      "Bash(Start-Process powershell *)",
+      "Bash(Out-String)",
+      "PowerShell(cd \"C:\\\\Users\\\\user\\\\Documents\\\\Azura\\\\manhwauz.com\\\\WEB\"; Start-Process powershell -ArgumentList \"-NoExit\", \"-Command\", \"cd 'C:\\\\Users\\\\user\\\\Documents\\\\Azura\\\\manhwauz.com\\\\WEB'; php -S localhost:8090 router.php\" -PassThru | Select-Object Id, ProcessName)",
+      "Bash(curl -s http://localhost:8090/)",
+      "Bash(curl -s -o /dev/null -w \"Status: %{http_code}\\\\n\" http://localhost:8090/browse)",
+      "Bash(curl -s -o /dev/null -w \"Status: %{http_code}\\\\n\" http://localhost:8090/comics/nano-machine)",
+      "Bash(curl -s -o /dev/null -w \"Status: %{http_code}\\\\n\" http://localhost:8090/api/comics.json)",
+      "Bash(curl -s -o /dev/null -w \"Status: %{http_code}\\\\n\" http://localhost:8090/reader/nano-machine/1)",
+      "Bash(curl -s -o /dev/null -w \"Status: %{http_code}\\\\n\" http://localhost:8090/login)",
+      "Bash(curl -s http://localhost:8090/api/comics.json)",
+      "Bash(php -r ' *)"
+    ]
+  }
+}

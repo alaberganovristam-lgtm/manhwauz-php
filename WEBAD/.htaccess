@@ -1,0 +1,49 @@
+# ══════════════════════════════════════════════════════════════
+#  Manhwa UZ — Admin Panel .htaccess
+#  Qo'shimcha xavfsizlik qoidalari
+# ══════════════════════════════════════════════════════════════
+
+Options -Indexes -MultiViews
+ServerSignature Off
+
+# ── Keshni o'chirish (admin sahifalari keshlanmasin) ──────────
+<IfModule mod_headers.c>
+    Header always set Cache-Control     "no-store, no-cache, must-revalidate, max-age=0"
+    Header always set Pragma            "no-cache"
+    Header always set X-Frame-Options  "DENY"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always unset X-Powered-By
+</IfModule>
+
+# ── Himoyalangan fayllar ───────────────────────────────────────
+<FilesMatch "\.(json|log|env|sql|md|lock|bak)$">
+    Require all denied
+</FilesMatch>
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# ── PHP xatolari ──────────────────────────────────────────────
+php_flag display_errors Off
+php_flag log_errors     On
+
+# ── IP cheklash (ixtiyoriy) — faqat o'z IP ingizdan kirish ───
+# Izohlangan qatorlarni ochib, o'z IP ingizni yozing:
+# <RequireAny>
+#     Require ip 203.0.113.42
+#     Require ip 127.0.0.1
+# </RequireAny>
+
+# ── Routing ────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /admin/
+
+    # Statik fayllar (assets)
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    # Hamma so'rovlar → admin/router.php
+    RewriteCond %{REQUEST_URI} !^/admin/router\.php
+    RewriteRule ^ router.php [L,QSA]
+</IfModule>

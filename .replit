@@ -1,0 +1,26 @@
+# Replit konfiguratsiyasi — Manhwa UZ
+# Bu Repl ildizida WEB/, WEBAD/, DATA/ papkalari bo'lishi kutiladi.
+
+run = "cd WEB && php -S 0.0.0.0:8080 router.php"
+entrypoint = "WEB/router.php"
+modules = ["php-8.2"]
+
+hidden = [".config"]
+
+[nix]
+channel = "stable-24_05"
+
+[env]
+AURA_PATH = "/home/runner/$REPL_SLUG/DATA"
+SITE_URL = "https://$REPL_SLUG.$REPL_OWNER.repl.co"
+
+[deployment]
+run = ["sh", "-c", "cd WEB && php -S 0.0.0.0:8080 router.php"]
+deploymentTarget = "cloudrun"
+
+[[ports]]
+localPort = 8080
+externalPort = 80
+
+[languages.php]
+pattern = "**/*.php"

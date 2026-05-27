@@ -1,0 +1,27 @@
+# Sensitive runtime data
+DATA/data/users.json
+DATA/data/comments.json
+DATA/data/bookmarks.json
+WEBAD/data/admin_setup.txt
+WEBAD/data/admins.json
+WEBAD/data/logs/
+
+# Logs
+*.log
+logs/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Replit
+.upm/
+.config/
+.replit.local
+
+# Composer (unused, but just in case)
+vendor/
+composer.lock

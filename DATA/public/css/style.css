@@ -1,0 +1,101 @@
+/* ═══════════════════════════════════════════
+   AsuraManga2 — Custom overrides (Tailwind handled by asura.css)
+   ═══════════════════════════════════════════ */
+
+/* ── Base reset not in Tailwind ── */
+*, *::before, *::after { box-sizing: border-box; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #1D1B22; }
+::-webkit-scrollbar-thumb { background: #312f40; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #913FE2; }
+
+/* ── Asura header custom classes (from original inline style) ── */
+.asura-desktop-flex, .asura-desktop-block { display: none; }
+.asura-mobile-button  { display: flex; }
+.asura-mobile-layer   { display: block; }
+
+@media (min-width: 901px) {
+  .asura-site-header  { height: 4rem; }
+  .asura-header-inner { width: 95%; padding-left: 0; padding-right: 0; }
+  .asura-desktop-flex { display: flex; }
+  .asura-desktop-block { display: block; }
+  .asura-mobile-button,
+  .asura-mobile-layer  { display: none !important; }
+}
+
+/* ── Utility: flex-center ── */
+.flex-center { display: flex; align-items: center; justify-content: center; }
+
+/* ── Embla carousel (trending) ── */
+.embla-trending { overflow: hidden; }
+.embla-trending__container { display: flex; gap: .75rem; }
+.embla-trending__slide { flex-shrink: 0; width: 150px; }
+
+/* ── Browse comic grid ── */
+.browse-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .75rem;
+}
+@media (min-width: 640px)  { .browse-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 900px)  { .browse-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1200px) { .browse-grid { grid-template-columns: repeat(5, 1fr); } }
+
+/* ── Pagination ── */
+.pagination { display: flex; align-items: center; justify-content: center; gap: .4rem; flex-wrap: wrap; margin: 2rem 0; }
+.page-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 36px; height: 36px; padding: 0 .5rem;
+  border-radius: 8px; font-size: .85rem; font-weight: 500;
+  background: #1D1B22; color: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.08);
+  transition: background .15s, color .15s;
+}
+.page-btn:hover { background: #312f40; color: #fff; }
+.page-btn.active { background: #913FE2; color: #fff; border-color: #913FE2; }
+.page-dots { color: rgba(255,255,255,.4); padding: 0 .25rem; }
+
+/* ── Reader images ── */
+.reader-img { width: 100%; max-width: 800px; display: block; margin: 0 auto; }
+
+/* ── Mobile menu overlay ── */
+#mobile-nav-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 48;
+  background: rgba(0,0,0,.7);
+}
+#mobile-nav-overlay.open { display: block; }
+#mobile-nav-drawer {
+  position: fixed; top: 0; left: 0; bottom: 0; width: 280px; z-index: 49;
+  background: #1C1924;
+  transform: translateX(-100%);
+  transition: transform .25s ease;
+  display: flex; flex-col; flex-direction: column;
+  overflow-y: auto;
+}
+#mobile-nav-drawer.open { transform: translateX(0); }
+
+/* ── Toast ── */
+#toast {
+  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(200%);
+  background: #913FE2; color: #fff; padding: .6rem 1.4rem; border-radius: 8px;
+  font-size: .875rem; font-weight: 500; z-index: 9999;
+  transition: transform .3s ease; pointer-events: none;
+  white-space: nowrap;
+}
+#toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ── Line clamp for browsers without Tailwind ── */
+.line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ── Popular sidebar tab active state ── */
+.pop-tab-active { background: #913FE2 !important; color: #fff !important; }
+
+/* ── Chapter list ── */
+.chapter-row { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
